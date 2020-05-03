@@ -1,11 +1,11 @@
 import java.util.Random;
 
-public abstract class Player {
+public abstract class Player<Type> {
 
     int place;
     int money;
     Properties properties;
-    String name;
+    Type name;
     boolean jail;
     int toursInJail = 0;
     boolean marathonMode = false;
@@ -21,7 +21,7 @@ public abstract class Player {
     protected abstract void goOrIncreaseProperty(Properties properties);
     protected abstract void changeProperty(Players players, Properties properties);
 
-    public Player(String name, int place, int money, Properties properties, boolean jail, Random dice){
+    public Player(Type name, int place, int money, Properties properties, boolean jail, Random dice){
         this.place = place;
         this.money = money;
         this.properties = properties;
@@ -994,7 +994,7 @@ public abstract class Player {
         }
     }
 
-    public void playCard(Card card, Players players, Properties properties){
+    public void playCard(Card card, Players players, Properties allProperties){
         switch (card.getNo()){
             case 0:
                 for (int i = 0; i < players.size(); i++) {
@@ -1033,7 +1033,7 @@ public abstract class Player {
             case 16:
             case 11:
             case 10:
-                goOrIncreaseProperty(properties);
+                goOrIncreaseProperty(allProperties);
                 break;
             case 15:
             case 14:
@@ -1041,29 +1041,43 @@ public abstract class Player {
             case 12:
                 Property property1 = canIncrease();
                 if (property1 != null){
-                    setKeysAllUp(property1, properties);
+                    setKeysAllUp(property1, allProperties);
                 }
                 break;
             case 18:
             case 17:
-                changeProperty(players, properties);
+                changeProperty(players, allProperties);
                 break;
             case 20:
             case 19:
                 Property property2 = canIncrease();
                 if (property2 != null){
-                    setKeysNearDown(property2, properties);
+                    setKeysNearDown(property2, allProperties);
                 }
                 break;
             case 21:
             case 22:
+                Property property3 = getSmallestValue();
                 if (properties.size() > 0){
-                    setKeysAllDown(properties.getProperty(0), properties);
+                    setKeysAllDown(property3, allProperties);
                 }
                 break;
             default:
                 break;
         }
+    }
+
+    public Property getSmallestValue(){
+        Property property = null;
+        int smallest = 100000;
+        for (int i = 0; i < properties.size(); i++) {
+            int key = properties.getProperty(i).getKey();
+            if (properties.getProperty(i).getPropertyValue().get(key) < smallest){
+                property = properties.getProperty(i);
+                smallest = properties.getProperty(i).getPropertyValue().get(key);
+            }
+        }
+        return property;
     }
 
     public int findIndex(Property property){
@@ -1144,7 +1158,7 @@ public abstract class Player {
         this.jail = jail;
     }
 
-    public String getName() {
+    public Type getName() {
         return name;
     }
 
