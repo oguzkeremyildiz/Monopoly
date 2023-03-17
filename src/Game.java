@@ -1,25 +1,43 @@
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+
 public class Game {
-    private static void percentage(int[] percentages, int times){
-        double divide = (100.0 / times);
-        for (int i = 0; i < percentages.length; i++){
-            System.out.println("player" + (i + 1) + "percentage: " + "%" + percentages[i] * divide);
-        }
-    }
 
     public static void main(String[]args){
-        int[] percentages = new int[3];
         int times = 100000;
+        HashMap<String, Integer> counter = new HashMap<>();
+        ArrayList<String> players = new ArrayList<>();
+        players.add("player1");
+        players.add("player2");
+        players.add("player3");
+        for (String s : players) {
+            counter.put(s, 0);
+        }
         for (int i = 0; i < times; i++) {
             Board board = new Board(i);
-            board.addPlayer(new PlayerTypeOne("player1",0, 1500, new Properties(), false, board.getDice()));
-            board.addPlayer(new PlayerTypeThree("player2",0, 1500, new Properties(), false, board.getDice()));
-            board.addPlayer(new PlayerTypeTwo("player3",0, 1500, new Properties(), false, board.getDice()));
+            Collections.shuffle(players);
+            for (String player : players) {
+                switch (player) {
+                    case "player1":
+                        board.addPlayer(new PlayerTypeOne("player1", 0, 1500, new Properties(), false, board.getDice()));
+                        break;
+                    case "player2":
+                        board.addPlayer(new PlayerTypeTwo("player2", 0, 1500, new Properties(), false, board.getDice()));
+                        break;
+                    case "player3":
+                        board.addPlayer(new PlayerTypeThree("player3", 0, 1500, new Properties(), false, board.getDice()));
+                        break;
+                }
+            }
             while (!board.isFinish()){
                 board.play();
                 board.changeTurn();
             }
-            percentages[board.winner()]++;
+            System.out.println("Game " + i + "#:");
+            int winnerIndex = board.winner();
+            counter.put(players.get(winnerIndex), counter.get(players.get(winnerIndex)) + 1);
         }
-        percentage(percentages, times);
+        System.out.println(counter);
     }
 }

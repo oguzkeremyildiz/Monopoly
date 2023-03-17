@@ -91,7 +91,7 @@ public class Players {
             for (int j = 0; j < getPlayer(i).sizeProperties(); j++) {
                 temporary += getPlayer(i).getProperties().getProperty(j).getPrice();
             }
-            //System.out.println(players.get(i).getName() + ": Money- " + getPlayer(i).getMoney() + " Properties- " + getPlayer(i).getProperties().size());
+            System.out.println(players.get(i).getName() + ": Money- " + getPlayer(i).getMoney() + " Properties- " + getPlayer(i).getProperties().size());
             if (temporary > money){
                 winner = i;
                 money = temporary;
