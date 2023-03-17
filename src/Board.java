@@ -176,7 +176,7 @@ public class Board {
         return players.isFinish();
     }
 
-    public int winner(){
+    public String winner(){
         return players.winner();
     }
 

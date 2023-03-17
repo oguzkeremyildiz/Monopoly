@@ -1,12 +1,12 @@
 import java.util.Random;
 
-public abstract class Player<Type> {
+public abstract class Player {
 
-    int place;
-    int money;
-    Properties properties;
-    Type name;
-    boolean jail;
+    private int place;
+    private int money;
+    private Properties properties;
+    private final String name;
+    private boolean jail;
     int toursInJail = 0;
     boolean marathonMode = false;
     int paymentsInMarathon = 0;
@@ -200,7 +200,7 @@ public abstract class Player<Type> {
     
     public abstract void play(Properties properties, Players players, Jail jail, Locations locations, CardLocations cardLocations, Cards cards);
 
-    public Player(Type name, int place, int money, Properties properties, boolean jail, Random dice){
+    public Player(String name, int place, int money, Properties properties, boolean jail, Random dice){
         this.place = place;
         this.money = money;
         this.properties = properties;
@@ -1337,7 +1337,7 @@ public abstract class Player<Type> {
         this.jail = jail;
     }
 
-    public Type getName() {
+    public String getName() {
         return name;
     }
 

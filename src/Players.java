@@ -82,10 +82,10 @@ public class Players {
         }
     }
 
-    public int winner(){
+    public String winner(){
         int temporary;
         int money = 0;
-        int winner = -1;
+        String winner = "";
         for (int i = 0; i < size(); i++) {
             temporary = getPlayer(i).getMoney();
             for (int j = 0; j < getPlayer(i).sizeProperties(); j++) {
@@ -93,7 +93,7 @@ public class Players {
             }
             System.out.println(players.get(i).getName() + ": Money- " + getPlayer(i).getMoney() + " Properties- " + getPlayer(i).getProperties().size());
             if (temporary > money){
-                winner = i;
+                winner = players.get(i).getName();
                 money = temporary;
             }
         }
