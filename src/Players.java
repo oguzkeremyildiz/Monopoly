@@ -2,9 +2,10 @@ import java.util.ArrayList;
 
 public class Players {
 
-    private ArrayList<Player> players = new ArrayList<>();
+    private final ArrayList<Player> players;
 
     public  Players(){
+        this.players = new ArrayList<>();
     }
 
     public Player bestTotalWorth(Player playerCurrent){

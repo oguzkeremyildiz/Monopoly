@@ -1,6 +1,6 @@
 public class Card {
 
-    int no;
+    private final int no;
     String name;
 
     public Card(int no, String name){

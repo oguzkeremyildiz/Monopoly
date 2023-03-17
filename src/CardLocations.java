@@ -2,9 +2,10 @@ import java.util.ArrayList;
 
 public class CardLocations {
 
-    private ArrayList<CardLocation> cardLocations = new ArrayList<>();
+    private final ArrayList<CardLocation> cardLocations;
 
     public CardLocations(){
+        this.cardLocations = new ArrayList<>();
     }
 
     public void addCardLocation(CardLocation cardLocation){

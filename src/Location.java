@@ -1,6 +1,6 @@
 public class Location {
 
-    int tableNo;
+    private final int tableNo;
 
     public Location(int tableNo){
         this.tableNo = tableNo;

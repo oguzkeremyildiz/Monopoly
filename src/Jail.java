@@ -1,6 +1,6 @@
 public class Jail {
 
-    int tableNo;
+    private final int tableNo;
 
     public Jail(int tableNo){
         this.tableNo = tableNo;
@@ -11,10 +11,6 @@ public class Jail {
     }
 
     public boolean containsTableNo(int place){
-        boolean bool = false;
-        if (getTableNo() == place){
-            bool = true;
-        }
-        return bool;
+        return getTableNo() == place;
     }
 }

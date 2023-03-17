@@ -4,13 +4,13 @@ public abstract class Player {
 
     private int place;
     private int money;
-    private Properties properties;
+    private final Properties properties;
     private final String name;
     private boolean jail;
-    int toursInJail = 0;
-    boolean marathonMode = false;
-    int paymentsInMarathon = 0;
-    Random dice;
+    protected int toursInJail = 0;
+    private boolean marathonMode = false;
+    private int paymentsInMarathon = 0;
+    private final Random dice;
 
     private void changeProperty(Players players, Properties allProperties){
         if (properties.size() > 0){

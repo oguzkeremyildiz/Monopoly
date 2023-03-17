@@ -2,14 +2,14 @@ import java.util.HashMap;
 import java.util.Random;
 
 public class Board {
-    Properties properties;
-    Jail jail;
-    Locations locations;
-    CardLocations cardLocations;
-    Cards cards;
-    Players players;
-    int turn;
-    Random dice;
+    private final Properties properties;
+    private final Jail jail;
+    private final Locations locations;
+    private final CardLocations cardLocations;
+    private final Cards cards;
+    private final Players players;
+    private int turn;
+    private final Random dice;
 
     private void addProperties(){
         HashMap<Integer, Integer> map = new HashMap<>();

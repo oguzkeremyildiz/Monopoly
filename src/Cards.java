@@ -4,9 +4,10 @@ import java.util.Random;
 
 public class Cards {
 
-    private ArrayList<Card> cards = new ArrayList<>();
+    private ArrayList<Card> cards;
 
     public Cards(){
+        this.cards = new ArrayList<>();
     }
 
     public void shuffle(Random dice){

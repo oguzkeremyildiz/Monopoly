@@ -2,9 +2,10 @@ import java.util.HashSet;
 
 public class Locations {
 
-    private HashSet<Location> locations = new HashSet<>();
+    private final HashSet<Location> locations;
 
     public Locations(){
+        this.locations = new HashSet<>();
     }
 
     public void addLocation(Location location){

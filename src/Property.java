@@ -2,11 +2,11 @@ import java.util.HashMap;
 
 public class Property {
 
-    int price;
-    int tableNo;
-    HashMap<Integer, Integer> propertyValue;
-    int key;
-    boolean status;
+    private final int price;
+    private final int tableNo;
+    private final HashMap<Integer, Integer> propertyValue;
+    private int key;
+    private boolean status;
 
     public Property(int tableNo, int price, HashMap<Integer, Integer> propertyValue, int key, boolean status){
         this.price = price;

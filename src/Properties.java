@@ -2,9 +2,10 @@ import java.util.ArrayList;
 
 public class Properties {
 
-    private ArrayList<Property> properties = new ArrayList<>();
+    private ArrayList<Property> properties;
 
     public Properties(){
+        this.properties = new ArrayList<>();
     }
 
     public void addProperty(Property property){

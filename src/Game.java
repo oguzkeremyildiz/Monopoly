@@ -17,6 +17,12 @@ public class Game {
             case "player4":
                 board.addPlayer(new PlayerTypeFour("player4", 0, 1500, new Properties(), false, board.getDice()));
                 break;
+            case "player5":
+                board.addPlayer(new PlayerTypeFive("player5", 0, 1500, new Properties(), false, board.getDice()));
+                break;
+            case "player6":
+                board.addPlayer(new PlayerTypeSix("player6", 0, 1500, new Properties(), false, board.getDice()));
+                break;
         }
     }
 
@@ -34,6 +40,8 @@ public class Game {
         players.add("player2");
         players.add("player3");
         players.add("player4");
+        players.add("player5");
+        players.add("player6");
         for (String s : players) {
             counter.put(s, 0);
         }

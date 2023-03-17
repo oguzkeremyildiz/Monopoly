@@ -1,6 +1,6 @@
 public class CardLocation {
 
-    int tableNo;
+    private final int tableNo;
 
     public CardLocation(int tableNo){
         this.tableNo = tableNo;
