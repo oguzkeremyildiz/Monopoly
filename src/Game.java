@@ -1,5 +1,7 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.Random;
 
 public class Game {
 
@@ -47,11 +49,9 @@ public class Game {
         }
         for (int i = 0; i < times; i++) {
             Board board = new Board(i);
-            for (int j = i % players.size(); j < players.size(); j++) {
-                addPlayer(players.get(j), board);
-            }
-            for (int j = 0; j < i % players.size(); j++) {
-                addPlayer(players.get(j), board);
+            Collections.shuffle(players, new Random(i));
+            for (String player : players) {
+                addPlayer(player, board);
             }
             while (!board.isFinish()){
                 board.play();
