@@ -16,31 +16,28 @@ public class PlayerTypeSix extends Player{
                 setMoney(getMoney() + 200);
                 setPlace(getPlace() + totalDice - 36);
             }
-            if (allProperties.containsTableNo(getPlace())){
-                for (int t = 0; t < allProperties.size(); t++) {
-                    if (allProperties.getProperty(t).getTableNo() == getPlace()) {
-                        if (!allProperties.getProperty(t).isStatus()){
-                            if (getMoney() > allProperties.getProperty(t).getPrice()){
-                                if (totalDice > 6) {
-                                    addProperty(allProperties.getProperty(t));
-                                    setKeysAllUp(allProperties.getProperty(t), allProperties);
-                                }
-                            }
-                        } else {
-                            increaseProperty(players, allProperties.getProperty(t));
+            int place = getPlace();
+            Property property = allProperties.containsTableNo(place);
+            if (property != null){
+                if (!property.isStatus()){
+                    if (getMoney() > property.getPrice()){
+                        if (totalDice > 6) {
+                            addProperty(property);
+                            setKeysAllUp(property, allProperties);
                         }
-                        break;
                     }
+                } else {
+                    increaseProperty(players, property);
                 }
-            } else if (jail.containsTableNo(getPlace())){
+            } else if (jail.containsTableNo(place)){
                 setJail(true);
                 setPlace(9);
-            } else if (locations.containsTableNo(getPlace())){
+            } else if (locations.containsTableNo(place)){
                 setMoney(getMoney() - 100);
                 if (getMoney() < 0){
                     sellProperty();
                 }
-            } else if (cardLocations.containsTableNo(getPlace())){
+            } else if (cardLocations.containsTableNo(place)){
                 playCard(cards.getCard(), players, allProperties);
             }
         } else {

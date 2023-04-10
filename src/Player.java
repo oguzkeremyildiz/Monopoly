@@ -12,6 +12,15 @@ public abstract class Player {
     private int paymentsInMarathon = 0;
     private final Random dice;
 
+    public Player(String name, int place, int money, Properties properties, boolean jail, Random dice){
+        this.place = place;
+        this.money = money;
+        this.properties = properties;
+        this.name = name;
+        this.jail = jail;
+        this.dice = dice;
+    }
+
     private void changeProperty(Players players, Properties allProperties){
         if (properties.size() > 0){
             for (int i = 0; i < allProperties.size(); i++) {
@@ -199,15 +208,6 @@ public abstract class Player {
     }
     
     public abstract void play(Properties properties, Players players, Jail jail, Locations locations, CardLocations cardLocations, Cards cards);
-
-    public Player(String name, int place, int money, Properties properties, boolean jail, Random dice){
-        this.place = place;
-        this.money = money;
-        this.properties = properties;
-        this.name = name;
-        this.jail = jail;
-        this.dice = dice;
-    }
 
     protected int dice(){
         int number = dice.nextInt(6);

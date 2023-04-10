@@ -15,29 +15,26 @@ public class PlayerTypeThree extends Player{
                 setMoney(getMoney() + 200);
                 setPlace(getPlace() + totalDice - 36);
             }
-            if (allProperties.containsTableNo(getPlace())){
-                for (int j = 0; j < allProperties.size(); j++) {
-                    if (allProperties.getProperty(j).getTableNo() == getPlace()) {
-                        if (!allProperties.getProperty(j).isStatus()){
-                            if (getMoney() / 5.00 > allProperties.getProperty(j).getPrice()){
-                                addProperty(allProperties.getProperty(j));
-                                setKeysAllUp(allProperties.getProperty(j), allProperties);
-                            }
-                        } else {
-                            increaseProperty(players, allProperties.getProperty(j));
-                        }
-                        break;
+            int place = getPlace();
+            Property property = allProperties.containsTableNo(place);
+            if (property != null){
+                if (!property.isStatus()){
+                    if (getMoney() / 5.00 > property.getPrice()){
+                        addProperty(property);
+                        setKeysAllUp(property, allProperties);
                     }
+                } else {
+                    increaseProperty(players, property);
                 }
-            } else if (jail.containsTableNo(getPlace())){
+            } else if (jail.containsTableNo(place)){
                 setJail(true);
                 setPlace(9);
-            } else if (locations.containsTableNo(getPlace())){
+            } else if (locations.containsTableNo(place)){
                 setMoney(getMoney() - 100);
                 if (getMoney() < 0){
                     sellProperty();
                 }
-            } else if (cardLocations.containsTableNo(getPlace())){
+            } else if (cardLocations.containsTableNo(place)){
                 playCard(cards.getCard(), players, allProperties);
             }
         } else {

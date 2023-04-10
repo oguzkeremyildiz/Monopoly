@@ -31,15 +31,13 @@ public class Properties {
         return bool;
     }
 
-    public boolean containsTableNo(int place){
-        boolean bool = false;
+    public Property containsTableNo(int place){
         for (Property property : properties) {
             if (property.getTableNo() == place) {
-                bool = true;
-                break;
+                return property;
             }
         }
-        return bool;
+        return null;
     }
 
     public int size(){
